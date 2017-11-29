@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block left_content %}
+    {% include 'ad.html' %}
+    <div class="topnews">
+      <h2>最新文章</h2>
+      {% for article in article_list %}
+      <p>what happend</p>
+      <div class="art">
+        <ul class="weiyi">
+          <h3><a href="{% url 'article' %}?id={{ article.id }}">{{ article.title }}</a></h3>
+          <li class="f1 aaa"><img src="/static/images/001.png" height="117"></li>
+          <li class="f1 bbb" style="width:200px;">哈哈哈哈哈哈绘声绘色实话实说哈哈哈绘声绘色实话实说时候哈哈哈绘声绘色实话实说时候哈哈哈绘声绘色实话实说时候时候还是还是生生世世</li>
+          <p class="autor"><span class="lm f_l">{% for tag in article.tag.all %}<a href="/">{{ tag.name }}</a>&nbsp;</span>{% endfor %}<span class="dtime f_l">{{ article.date_publish | date:'Y-m-d' }}</span><span class="viewnum f_r">浏览（<a href="/">{{ article.click_count }}</a>）</span><span class="pingl f_r">评论（<a href="/">{{ article.comment_set.all.count }}</a>）</span></p>
+        </ul>
+
+      </div>
+
+      <div class="art">
+      <ul class="weiyi">
+        <li class="f1 aaa"><img src="/static/images/001.png" height="117"></li>
+        <li class="f1 bbb" style="width:200px;">哈哈哈哈哈哈绘声绘色实话实说哈哈哈绘声绘色实话实说时候哈哈哈绘声绘色实话实说时候哈哈哈绘声绘色实话实说时候时候还是还是生生世世</li>
+      </ul>
+      <p>这是底部的标签</p>    
+      </div>
+      {% endfor %}
+    </div>
+    {% include 'pagination.html' %}
+{% endblock %}
