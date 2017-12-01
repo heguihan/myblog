@@ -29,7 +29,7 @@ SECRET_KEY = 'dn8m39os6_il=$8j35qi(m@v8dj1+m7if9h1($nrje3u1nlljb'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -60,7 +60,7 @@ ROOT_URLCONF = 'blog_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -82,8 +82,12 @@ WSGI_APPLICATION = 'blog_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'myblog_test',
+        'USER': 'root',
+        'PASSWORD': 'rootadmin',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
@@ -135,9 +139,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 # AUTH_USER_MODEL = 'blog.User'
 
 
-# STATICFILE_DIRS = {
-#     os.path.join(BASE_DIR, 'static')
-# }
+STATICFILE_DIRS = {
+    os.path.join(BASE_DIR, 'static'),
+}
 SITE_ROOT=os.path.join(os.path.abspath(os.path.dirname(__file__)),'..')
 STATIC_ROOT = os.path.join(SITE_ROOT,'static')
 
@@ -145,8 +149,8 @@ STATIC_ROOT = os.path.join(SITE_ROOT,'static')
 SITE_URL = 'http://localhost:8000/'
 SITE_NAME = '何圭韩的个人博客'
 SITE_DESC = '专注Python开发，欢迎和大家交流'
-WEIBO_SINA = 'http://weibo.sina.com/yopoing'
-WEIBO_TENCENT = 'http://weibo.qq.com/yopoing'
+WEIBO_SINA = 'http://weibo.sina.com'
+WEIBO_TENCENT = 'http://weibo.qq.com/'
 PRO_RSS = 'http://www.baidu.com'
 PRO_EMAIL = 'yopoing@vip.qq.com'
 
